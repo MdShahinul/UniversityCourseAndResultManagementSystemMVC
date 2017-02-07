@@ -173,6 +173,7 @@
     <Compile Include="Gateway\DepartmentGateway.cs" />
     <Compile Include="Gateway\CourseGateway.cs" />
     <Compile Include="Gateway\DesignationGateway.cs" />
+    <Compile Include="Gateway\RoomGateway.cs" />
     <Compile Include="Gateway\SemesterGateway.cs" />
     <Compile Include="Gateway\TeacherGateway.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,10 +185,12 @@
     <Compile Include="Manager\DayOfWeekManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />
     <Compile Include="Manager\DesignationManager.cs" />
+    <Compile Include="Manager\RoomManager.cs" />
     <Compile Include="Manager\SemesterManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllocateClassroomModel.cs" />
+    <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\ScheduleInfoModel.cs" />
     <Compile Include="Models\CourseAssignModel.cs" />
     <Compile Include="Models\CourseModel.cs" />

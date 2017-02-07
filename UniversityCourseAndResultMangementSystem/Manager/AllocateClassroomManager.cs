@@ -25,12 +25,5 @@ namespace UniversityCourseAndResultMangementSystem.Manager
         }
 
       
-
-        public List<AllocateClassroomModel> GateAllRoomNoManager()
-        {
-            return allocateClassroomGateway.GateAllRoomNoGateway();
-        }
-
-
     }
 }

@@ -14,13 +14,14 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
         DepartmentManager departmentManager = new DepartmentManager();
         CourseManager courseManager = new CourseManager();
         DayOfWeekManager dayOfWeekManager = new DayOfWeekManager();
+        RoomManager roomManager = new RoomManager();
         
        [HttpGet]
         public ActionResult AllocateRoom()
        {
             ViewBag.message = TempData["Msg"]; 
             ViewBag.departmentList = departmentManager.GateAllDepertmentManager();
-            ViewBag.roomList = allocateClassroomManager.GateAllRoomNoManager();
+           ViewBag.roomList = roomManager.GateAllRoomNoManager(); 
             ViewBag.dayList = dayOfWeekManager.GateAllDayManager();
            return View();
         }

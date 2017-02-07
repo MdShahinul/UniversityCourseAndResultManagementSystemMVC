@@ -26,31 +26,6 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             con.Close();
             return rowAffcet;
         }
-
-
-
-        public List<AllocateClassroomModel> GateAllRoomNoGateway()
-        {
-            SqlConnection con = new SqlConnection(connectionString);
-            string query = "Select * from Room";
-            SqlCommand cmd = new SqlCommand(query, con);
-            List<AllocateClassroomModel> allocateClassroomModels = new List<AllocateClassroomModel>();
-            AllocateClassroomModel allocateClassroom = new AllocateClassroomModel();
-            con.Open();
-            SqlDataReader dataReader = cmd.ExecuteReader();
-            if (dataReader.HasRows)
-            {
-                while (dataReader.Read())
-                {
-                    allocateClassroom.RoomNoId = Convert.ToInt32(dataReader["RoomId"]);
-                    allocateClassroom.RoomNo = dataReader["RoomNo"].ToString();
-                    allocateClassroomModels.Add(allocateClassroom);
-                }
-                dataReader.Close();
-            }
-            con.Close();
-            return allocateClassroomModels;
-        }
-
+        
       }
 }
