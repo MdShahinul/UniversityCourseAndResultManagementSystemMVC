@@ -164,8 +164,10 @@
     <Compile Include="Controllers\CourseAssignController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmetnController.cs" />
+    <Compile Include="Controllers\EnrollCourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegisterStudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Gateway\AllocateClassroomGateway.cs" />
     <Compile Include="Gateway\AllocateClassroomViewGateway.cs" />
@@ -173,6 +175,8 @@
     <Compile Include="Gateway\DepartmentGateway.cs" />
     <Compile Include="Gateway\CourseGateway.cs" />
     <Compile Include="Gateway\DesignationGateway.cs" />
+    <Compile Include="Gateway\EnrollCourseGateway.cs" />
+    <Compile Include="Gateway\RegisterStudentGateway.cs" />
     <Compile Include="Gateway\RoomGateway.cs" />
     <Compile Include="Gateway\SemesterGateway.cs" />
     <Compile Include="Gateway\TeacherGateway.cs" />
@@ -185,11 +189,14 @@
     <Compile Include="Manager\DayOfWeekManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />
     <Compile Include="Manager\DesignationManager.cs" />
+    <Compile Include="Manager\RegisterStudentManager.cs" />
     <Compile Include="Manager\RoomManager.cs" />
     <Compile Include="Manager\SemesterManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllocateClassroomModel.cs" />
+    <Compile Include="Models\EnrollCourseModel.cs" />
+    <Compile Include="Models\RegisterStudentModel.cs" />
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\ScheduleInfoModel.cs" />
     <Compile Include="Models\CourseAssignModel.cs" />
@@ -282,6 +289,8 @@
     <Content Include="Views\CourseAssign\ViewCourseStatic.cshtml" />
     <Content Include="Views\AllocateClassroom\AllocateRoom.cshtml" />
     <Content Include="Views\AllocateClassroomView\ViewClassRoomSchedule.cshtml" />
+    <Content Include="Views\RegisterStudent\RegirstStudentSave.cshtml" />
+    <Content Include="Views\EnrollCourse\EnrollCourseSave.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

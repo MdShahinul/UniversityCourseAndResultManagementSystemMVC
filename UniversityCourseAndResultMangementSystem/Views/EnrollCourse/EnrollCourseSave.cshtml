@@ -1,0 +1,80 @@
+﻿@using UniversityCourseAndResultMangementSystem.Models
+
+@{
+    ViewBag.Title = "EnrollCourseSave";
+    List<RegisterStudentModel> registerList = ViewBag.registerList;
+}
+
+<h2>Enroll Course Save</h2>
+<form class="container" method="POST">
+
+
+    <div class="form-horizontal">
+        <fieldset>
+            <div>
+                @if (ViewBag.message != null)
+                {
+                    <h4>@ViewBag.message</h4>
+                }
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label for="RegistationNumberId">Student Reg No.</label>
+                </div>
+                <div class="col-sm-10">
+                    <select id="RegistationNumberId" name="RegistationNumberId" class="form-control">
+                        <option value="">----Select----</option>
+                        @foreach (var register in registerList)
+                        {
+                            <option value=@register.StudentId>@register.RegistationNumber</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label for="StudentName">Name</label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" id="StudentName" name="StudentName" readonly="readonly" placeholder="<view>" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label for="StudentEmail">Email</label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" name="StudentEmail" id="StudentEmail" readonly="readonly" placeholder="<view>" class="form-control" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label for="DepartmentName">Department</label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" name="DepartmentName" id="DepartmentName" readonly="readonly" placeholder="<view>" class="form-control" />
+                </div>
+            </div>
+
+          
+            
+            
+            
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" id="submitButton">Enroll</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+
+
+
+
+</form>
+

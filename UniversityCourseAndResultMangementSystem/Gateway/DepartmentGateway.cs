@@ -61,5 +61,27 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             con.Close();
             return saveDepartments;
         }
+        public string GateDepartmentCodeByDepartmentId(int departmentId)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            string query = "select * from Department where DepartmentID = '" + departmentId + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            string code = ""; 
+            if (dataReader.HasRows)
+            {
+                while (dataReader.Read())
+                {
+                    //DepartmentModel departmentModel = new DepartmentModel();
+                    //departmentModel.DepartmentID = Convert.ToInt32(dataReader["DepartmentID"]);
+                    //departmentModel.Name = dataReader["DepartName"].ToString();
+                    code=dataReader["DepartCode"].ToString();
+                    }
+                dataReader.Close();
+            }
+            con.Close();
+            return code;
+        }
     }
 }
