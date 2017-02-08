@@ -10,6 +10,7 @@ namespace UniversityCourseAndResultMangementSystem.Models
     public class EnrollCourseModel
     {
         public int EnrollCourseId { get; set; }
+        public int SudentId { get; set; }
         public string RegistationNumberId { get; set; }
         public string StudentName { get; set; }
         public string StudentEmail { get; set; }

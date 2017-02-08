@@ -15,7 +15,7 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
         public int GateAllEnrollCourseGateway(EnrollCourseModel enrollCourseModel)
         {
             SqlConnection con = new SqlConnection(connectingString);
-            string query = "select * from EnrollCourse values('"+enrollCourseModel.RegistationNumberId+"','"+enrollCourseModel.CourseId+"','"+enrollCourseModel.Date+"')";
+            string query = "select * from EnrollCourse values('"+enrollCourseModel.SudentId+"','"+enrollCourseModel.CourseId+"','"+enrollCourseModel.Date+"')";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int rowAffect = cmd.ExecuteNonQuery(); 
