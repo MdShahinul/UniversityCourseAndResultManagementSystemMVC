@@ -191,6 +191,7 @@
     <Compile Include="Manager\DayOfWeekManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />
     <Compile Include="Manager\DesignationManager.cs" />
+    <Compile Include="Manager\EnrollCourseManager.cs" />
     <Compile Include="Manager\RegisterStudentManager.cs" />
     <Compile Include="Manager\RoomManager.cs" />
     <Compile Include="Manager\SemesterManager.cs" />
