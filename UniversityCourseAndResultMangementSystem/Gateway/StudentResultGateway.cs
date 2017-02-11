@@ -25,6 +25,24 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             return rowAffect; 
         }
 
+        public string IsExistResult(StudentResultModel studentResultModel)
+        {
+            string message = null;
+
+            SqlConnection con = new SqlConnection(connectionString);
+            string query = "select * from Result Where StudentId='" + studentResultModel.StudentId +
+                           "' AND CourseId='" + studentResultModel.CourseId + "' ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                message = "Sorry, Already Result Assigned.";
+            }
+            con.Close();
+            return message;
+        }
+
         public List<GradeModel> GatAllGradeGateway()
         {
             SqlConnection con = new SqlConnection(connectionString);

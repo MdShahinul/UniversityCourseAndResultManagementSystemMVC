@@ -116,5 +116,54 @@
             });
 
         });
+
+
+        $(document).ready(function () {
+            $("#StudentId").change(function () {
+                var student = $("#StudentId").val();
+                $("#StudentName").empty();
+                $("#StudentEmail").empty();
+                $("#DepartmentName").empty();
+                var json = {
+                    StudentId: student
+                };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GateRegisterNumberByStudentId", "StudentResult")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $("#StudentName").val(data.StudentName);
+                        $("#StudentEmail").val(data.StudentEmail);
+                        $("#DepartmentName").val(data.DepartmentName);
+                    }
+                });
+            });
+
+        });
+
+        $(document).ready(function () {
+            $("#StudentId").change(function () {
+                var student = $("#StudentId").val();
+                $("#CourseId").empty();
+                $("#CourseId").append('<option value="">----Select-----</option>');
+                var json = {
+                    StudentId: student
+                };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GateAllCourse", "StudentResult")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CourseName + '');
+
+                        });
+                    }
+                });
+            });
+
+        });
     </script>
 }

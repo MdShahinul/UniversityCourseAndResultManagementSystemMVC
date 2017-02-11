@@ -13,15 +13,24 @@ namespace UniversityCourseAndResultMangementSystem.Manager
 
         public string StudentResultSaveManager(StudentResultModel studentResultModel)
         {
-            int rowAffect = studentResultGateway.StudentResultSaveGateway(studentResultModel);
-            if (rowAffect > 0)
+            if (studentResultGateway.IsExistResult(studentResultModel)==null)
             {
-                return "Save Successfull";
+                if (studentResultGateway.StudentResultSaveGateway(studentResultModel) > 0)
+                {
+                    return "Save Successfull";
+                }
+                else
+                {
+                    return "Save Fail";
+                }
             }
             else
             {
-                return "Save Fail"; 
+                return studentResultGateway.IsExistResult(studentResultModel); 
             }
+            
+           
+           
         }
 
         public List<GradeModel> GatAllGradeManager()

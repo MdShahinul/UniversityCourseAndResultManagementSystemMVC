@@ -13,6 +13,8 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
 
         RegisterStudentManager registerStudentManager = new RegisterStudentManager();
         StudentResultManager studentResultManager = new StudentResultManager();
+        CourseManager courseManager = new CourseManager();
+        EnrollCourseManager enrollCourseManager = new EnrollCourseManager();
         [HttpGet]
         public ActionResult StudentResultSave()
         {
@@ -30,5 +32,24 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
             return RedirectToAction("StudentResultSave"); 
         }
 
+
+        public JsonResult GateRegisterNumberByStudentId(int StudentId)
+        {
+            EnrollCourseModel register = enrollCourseManager.GateRegisterNumberByStudentId(StudentId);
+            return Json(register, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GateAllCourse(int? StudentId)
+        {
+            var department = GetDepertmentIdByStudentId(StudentId);
+            var course = courseManager.GateAllCourseManager();
+            var courseList = course.Where(a => a.DepartmentId == department).ToList();
+            return Json(courseList, JsonRequestBehavior.AllowGet);
+        }
+
+        int GetDepertmentIdByStudentId(int? StudentId)
+        {
+            return enrollCourseManager.GetDepertmentIdByStudentId(StudentId);
+        }
     }
 }

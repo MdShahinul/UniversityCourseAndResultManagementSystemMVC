@@ -13,14 +13,35 @@ namespace UniversityCourseAndResultMangementSystem.Manager
 
         public string GateAllEnrollCourseManager(EnrollCourseModel enrollCourseModel)
         {
-            if (enrollCourseGateway.GateAllEnrollCourseGateway(enrollCourseModel) > 0)
+            if (enrollCourseGateway.IsExist(enrollCourseModel) == null)
             {
-                return "Save Successfull"; 
+                if (enrollCourseGateway.GateAllEnrollCourseGateway(enrollCourseModel) > 0)
+                {
+                    return "Save Successfull";
+                }
+                else
+                {
+                    return "Save Fail";
+                }
             }
             else
             {
-                return "Save Fail"; 
+                return enrollCourseGateway.IsExist(enrollCourseModel); 
             }
+          
         }
+
+        public EnrollCourseModel GateRegisterNumberByStudentId(int StudentId)
+        {
+            return enrollCourseGateway.GateRegisterNumberByStudentId(StudentId); 
+        }
+
+       
+
+        public int GetDepertmentIdByStudentId(int? StudentId)
+        {
+            return enrollCourseGateway.GetDepertmentIdByStudentId(StudentId); 
+        }
+      
     }
 }

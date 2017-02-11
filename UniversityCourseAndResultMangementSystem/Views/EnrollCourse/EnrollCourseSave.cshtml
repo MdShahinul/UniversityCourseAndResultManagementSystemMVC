@@ -95,7 +95,7 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("#enrollCourse").validate({
                 rules: {
                     StudentId: "required",
@@ -112,27 +112,55 @@
         });
 
 
-        @*$(document).ready(function() {
+        $(document).ready(function() {
             $("#StudentId").change(function() {
                 var student = $("#StudentId").val();
                 $("#StudentName").empty();
                 $("#StudentEmail").empty();
-
+                $("#DepartmentId").empty();
                 var json = {
                     StudentId: student
                 };
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("", "CourseAssign")',
+                    url: '@Url.Action("GateRegisterNumberByStudentId", "EnrollCourse")',
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(json),
                     success: function(data) {
-                        $("#CreditToBeTaken").val(data.TeacherCreditToTaken);
-                        $("#RemainingCredit").val(data.TeacherRemainingCredit); 
+                        $("#StudentName").val(data.StudentName);
+                        $("#StudentEmail").val(data.StudentEmail);
+                        $("#DepartmentId").val(data.DepartmentName);
                     }
+                });
             });
 
-        });*@
+        });
+
+        $(document).ready(function () {
+            $("#StudentId").change(function () {
+                var student = $("#StudentId").val();
+                $("#CourseId").empty();
+                $("#CourseId").append('<option value="">----Select-----</option>');
+                var json = {
+                    StudentId: student
+                };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GateAllCourse", "EnrollCourse")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CourseName + '');
+
+                        });
+                    }
+                });
+            });
+
+        });
+
+
     </script>
     
     

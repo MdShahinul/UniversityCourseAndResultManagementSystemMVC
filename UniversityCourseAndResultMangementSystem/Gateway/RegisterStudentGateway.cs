@@ -67,5 +67,26 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             con.Close();
             return registerStudent;
         }
+
+     
+        //public int GetDeptIdByStudentId(int studentId)
+        //{
+        //    SqlConnection connection = new SqlConnection(connectingString);
+        //    string query = "SELECT DepartmentId FROM StudentRegister WHERE StudentID=" + studentId;
+        //    SqlCommand command = new SqlCommand(query, connection);
+        //    connection.Open();
+        //    SqlDataReader reader = command.ExecuteReader();
+        //    int dept = 0;
+        //    if (reader.HasRows)
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            dept = Convert.ToInt32(reader["DepartmentId"].ToString());
+        //        }
+        //        reader.Close();
+        //    }
+        //    connection.Close();
+        //    return dept;
+        //}
     }
 }
