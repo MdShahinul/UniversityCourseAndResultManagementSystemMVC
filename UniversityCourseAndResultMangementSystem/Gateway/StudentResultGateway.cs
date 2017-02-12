@@ -43,6 +43,22 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             return message;
         }
 
+        public string IsExistNotEnorllResult(StudentResultModel studentResultModel)
+        {
+            string message = null;
+            SqlConnection con = new SqlConnection(connectionString);
+            string query = "select * from EnrollCourse Where StudentId='" + studentResultModel.StudentId +"' ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                message = "This Student are not Enroll";
+            }
+            con.Close();
+            return message;
+        }
+
         public List<GradeModel> GatAllGradeGateway()
         {
             SqlConnection con = new SqlConnection(connectionString);

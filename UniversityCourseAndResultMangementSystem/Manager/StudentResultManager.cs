@@ -13,29 +13,33 @@ namespace UniversityCourseAndResultMangementSystem.Manager
 
         public string StudentResultSaveManager(StudentResultModel studentResultModel)
         {
-            if (studentResultGateway.IsExistResult(studentResultModel)==null)
+            if (studentResultGateway.IsExistNotEnorllResult(studentResultModel) != null)
             {
-                if (studentResultGateway.StudentResultSaveGateway(studentResultModel) > 0)
+                if (studentResultGateway.IsExistResult(studentResultModel) == null)
                 {
-                    return "Save Successfull";
+                    if (studentResultGateway.StudentResultSaveGateway(studentResultModel) > 0)
+                    {
+                        return "Save Successfull";
+                    }
+                    else
+                    {
+                        return "Save Fail";
+                    }
                 }
                 else
                 {
-                    return "Save Fail";
+                    return studentResultGateway.IsExistResult(studentResultModel);
                 }
             }
             else
             {
-                return studentResultGateway.IsExistResult(studentResultModel); 
+                return "This Student are Not Enroll !"; 
             }
-            
-           
-           
         }
 
         public List<GradeModel> GatAllGradeManager()
         {
-            return studentResultGateway.GatAllGradeGateway(); 
-        } 
+            return studentResultGateway.GatAllGradeGateway();
+        }
     }
 }

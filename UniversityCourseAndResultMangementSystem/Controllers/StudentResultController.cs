@@ -46,7 +46,6 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
             var courseList = course.Where(a => a.DepartmentId == department).ToList();
             return Json(courseList, JsonRequestBehavior.AllowGet);
         }
-
         int GetDepertmentIdByStudentId(int? StudentId)
         {
             return enrollCourseManager.GetDepertmentIdByStudentId(StudentId);
