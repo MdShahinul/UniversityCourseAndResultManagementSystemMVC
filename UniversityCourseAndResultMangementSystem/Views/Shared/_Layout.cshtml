@@ -21,21 +21,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("SaveDepartment", "SaveDepartment", "Departmetn")</li>*@
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    @*<li>@Html.ActionLink("SaveDepartment", "SaveDepartment", "Departmetn")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Dapertment
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Save Department","SaveDepartment","Departmetn")</li>
-                            <li>@Html.ActionLink("View All Department", "ViewAllDepartment","Departmetn")</li>
+                            <li>@Html.ActionLink("Save Department", "SaveDepartment", "Departmetn")</li>
+                            <li>@Html.ActionLink("View All Department", "ViewAllDepartment", "Departmetn")</li>
                         </ul>
                     </li>
-                    
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Course
@@ -46,7 +45,6 @@
                             <li>@Html.ActionLink("Enroll Course", "EnrollCourseSave", "EnrollCourse")</li>
                         </ul>
                     </li>
-                    
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Teacher
@@ -55,10 +53,10 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Save Teacher", "SaveTeacher", "Teacher")</li>
                             <li>@Html.ActionLink("Course Assign To Teacher", "SaveCourseAssign", "CourseAssign")</li>
-                            <li>@Html.ActionLink("View Course Static", "ViewCourseStatic","CourseAssign")</li>
+                            <li>@Html.ActionLink("View Course Static", "ViewCourseStatic", "CourseAssign")</li>
                         </ul>
                     </li>
-                    
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Allocate Room
@@ -67,11 +65,8 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Allocate Class Room", "AllocateRoom", "AllocateClassroom")</li>
                             <li>@Html.ActionLink("View Class Room Schedule", "ViewClassRoomSchedule", "AllocateClassroomView")</li>
-                            @*<li>@Html.ActionLink("View Course Static", "ViewCourseStatic", "CourseAssign")</li>*@
                         </ul>
                     </li>
-                    
-                    
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Student
@@ -80,7 +75,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Register Student", "RegirstStudentSave", "RegisterStudent")</li>
                             <li>@Html.ActionLink("Student Result", "StudentResultSave", "StudentResult")</li>
-                            @*<li>@Html.ActionLink("View Course Static", "ViewCourseStatic", "CourseAssign")</li>*@
+                            <li>@Html.ActionLink("View Result", "ResultView", "ViewResult")</li>
                         </ul>
                     </li>
 

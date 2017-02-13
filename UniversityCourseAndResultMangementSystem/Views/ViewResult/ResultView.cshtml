@@ -80,42 +80,66 @@
     
     
     <script>
-        $(document).ready(function() {
-                $("#ViewResult").validate({
-                    rules: {
-                        StudentId:"required",
+    $(document).ready(function () {
+        $("#ViewResult").validate({
+            rules: {
+                StudentId: "required",
             },
-                message: {
-                    StudentId:"Select Register Number"
+            message: {
+                StudentId: "Select Register Number"
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $("#StudentId").change(function () {
+            var student = $("#StudentId").val();
+            $("#StudentName").empty();
+            $("#StudentEmail").empty();
+            $("#DepartmentName").empty();
+            var json = {
+                StudentId: student
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GateRegisterNumberByStudentId", "ViewResult")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $("#StudentName").val(data.StudentName);
+                    $("#StudentEmail").val(data.StudentEmail);
+                    $("#DepartmentName").val(data.DepartmentName);
                 }
             });
         });
 
-        $(document).ready(function () {
+    });
+
+
+    $(document).ready(function () {
             $("#StudentId").change(function () {
                 var student = $("#StudentId").val();
-                $("#StudentName").empty();
-                $("#StudentEmail").empty();
-                $("#DepartmentName").empty();
+                $("#result").empty();
                 var json = {
                     StudentId: student
                 };
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("GateRegisterNumberByStudentId", "StudentResult")',
+                    url: '@Url.Action("GateListOfStudentResult", "ViewResult")',
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(json),
                     success: function (data) {
-                        $("#StudentName").val(data.StudentName);
-                        $("#StudentEmail").val(data.StudentEmail);
-                        $("#DepartmentName").val(data.DepartmentName);
+                        $.each(data, function (key, value) {
+                            //alert(key);
+                            $("#result").append('<tr> <td>' + value.CourseCode + '</td> <td>' + value.CourseName + '</td><td>' + value.Grade + '</td></tr>');
+                        });
                     }
                 });
             });
 
         });
 
-    </script>
+</script>
 
 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Management;
 using System.Web.Mvc;
 using UniversityCourseAndResultMangementSystem.Manager;
 using UniversityCourseAndResultMangementSystem.Models;
@@ -13,6 +14,7 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
         EnrollCourseManager enrollCourseManager = new EnrollCourseManager();
         CourseManager courseManager = new CourseManager();
         RegisterStudentManager registerStudentManager = new RegisterStudentManager();
+        ViewResultManager viewResultManager = new ViewResultManager();
 
         [HttpGet]
         public ActionResult ResultView()
@@ -26,17 +28,20 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
         //    return View();
         //}
 
-        public JsonResult GateAllCourse(int? StudentId)
+        public JsonResult GateRegisterNumberByStudentId(int StudentId)
         {
-            var department = GetDepertmentIdByStudentId(StudentId);
-            var course = courseManager.GateAllCourseManager();
-            var courseList = course.Where(a => a.DepartmentId == department).ToList();
-            return Json(courseList, JsonRequestBehavior.AllowGet);
+            EnrollCourseModel register = enrollCourseManager.GateRegisterNumberByStudentId(StudentId);
+            return Json(register, JsonRequestBehavior.AllowGet);
         }
 
-        int GetDepertmentIdByStudentId(int? StudentId)
+        public JsonResult GateListOfStudentResult(int StudentId)
         {
-            return enrollCourseManager.GetDepertmentIdByStudentId(StudentId);
+            var grade = viewResultManager.GateListOfStudentResult(StudentId);
+            var gradeList = grade.Where(a => a.StudentId == StudentId).ToList();
+            return Json(gradeList, JsonRequestBehavior.AllowGet);
         }
+
+
+      
 	}
 }

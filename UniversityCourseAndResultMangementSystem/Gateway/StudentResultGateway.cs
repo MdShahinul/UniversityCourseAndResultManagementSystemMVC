@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.UI.WebControls;
 using UniversityCourseAndResultMangementSystem.Models;
 
 namespace UniversityCourseAndResultMangementSystem.Gateway
@@ -47,7 +49,7 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
         {
             string message = null;
             SqlConnection con = new SqlConnection(connectionString);
-            string query = "select * from EnrollCourse Where StudentId='" + studentResultModel.StudentId +"' ";
+            string query = "select * from EnrollCourse Where StudentId='" + studentResultModel.StudentId +"' AND CourseId ='"+studentResultModel.CourseId+"' ";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             SqlDataReader dataReader = cmd.ExecuteReader();
@@ -80,6 +82,8 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             }
             con.Close();
             return gradeModels; 
-        } 
+        }
+
+       
     }
 }

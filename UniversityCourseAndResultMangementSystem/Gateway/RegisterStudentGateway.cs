@@ -47,7 +47,7 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
         public List<RegisterStudentModel> GateRegistationNumberGateway()
         {
             SqlConnection con = new SqlConnection(connectingString);
-            string query = "select * from StudentRegister";
+            string query = "select * from StudentRegister ORDER BY RegistationNumber ASC";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             SqlDataReader dataReader = cmd.ExecuteReader();

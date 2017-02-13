@@ -41,5 +41,7 @@ namespace UniversityCourseAndResultMangementSystem.Manager
         {
             return studentResultGateway.GatAllGradeGateway();
         }
+
+       
     }
 }

@@ -23,11 +23,12 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
         [HttpPost]
         public ActionResult RegirstStudentSave(RegisterStudentModel registerStudent)
         {
-
             ViewBag.message = _registerStudentManager.SaveRegisterStuden(registerStudent);
             //departmentManager.GateAllDepertmentManager();
             TempData["Msg"] = ViewBag.message;
             return RedirectToAction("RegirstStudentSave"); 
         }
+
+       
 	}
 }
