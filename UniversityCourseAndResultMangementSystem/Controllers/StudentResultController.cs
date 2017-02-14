@@ -13,7 +13,7 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
 
         RegisterStudentManager registerStudentManager = new RegisterStudentManager();
         StudentResultManager studentResultManager = new StudentResultManager();
-        CourseManager courseManager = new CourseManager();
+        CourseAssignManager courseManager = new CourseAssignManager();
         EnrollCourseManager enrollCourseManager = new EnrollCourseManager();
         [HttpGet]
         public ActionResult StudentResultSave()

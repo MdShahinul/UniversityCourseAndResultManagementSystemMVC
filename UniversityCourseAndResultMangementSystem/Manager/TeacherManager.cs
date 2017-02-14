@@ -13,14 +13,22 @@ namespace UniversityCourseAndResultMangementSystem.Manager
 
         public string SaveTeacherManager(TeacherModel teacherModel)
         {
-            if (teacherGateway.SaveTeacherGateway(teacherModel) > 0)
+            if (teacherGateway.IsEmailExist(teacherModel) == null)
             {
-                return "Save Successfull";
+                if (teacherGateway.SaveTeacherGateway(teacherModel) > 0)
+                {
+                    return "Save Successfull";
+                }
+                else
+                {
+                    return "Save Fail";
+                }
             }
             else
             {
-                return "Save Fail";
+                return teacherGateway.IsEmailExist(teacherModel); 
             }
+          
         }
 
         public List<TeacherModel> GateAllTeacherManager()

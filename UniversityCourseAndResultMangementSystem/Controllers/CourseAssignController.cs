@@ -14,7 +14,7 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
     {
        DepartmentManager departmentManager = new DepartmentManager();
        TeacherManager teacherManager = new TeacherManager();
-       CourseManager courseManager = new CourseManager();
+        CourseAssignManager courseManager = new CourseAssignManager();
         [HttpGet]
        public ActionResult SaveCourseAssign()
         {

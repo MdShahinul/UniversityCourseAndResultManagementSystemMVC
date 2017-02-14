@@ -15,7 +15,9 @@ namespace UniversityCourseAndResultMangementSystem.Manager
         public string SaveRegisterStuden(RegisterStudentModel registerStudentModel)
         {
             Registernumber(registerStudentModel);
-            if (_registerStudentGateway.InsertRegisterStudent(registerStudentModel) > 0)
+            if (_registerStudentGateway.IsExistEmail(registerStudentModel) == null)
+            {
+                 if (_registerStudentGateway.InsertRegisterStudent(registerStudentModel) > 0)
             {
                 return "Save Successfull"; 
             }
@@ -23,6 +25,12 @@ namespace UniversityCourseAndResultMangementSystem.Manager
             {
                 return "Save Fail"; 
             }
+            }
+            else
+            {
+                return _registerStudentGateway.IsExistEmail(registerStudentModel); 
+            }
+     
         }
 
         public RegisterStudentModel Registernumber(RegisterStudentModel registerStudent)

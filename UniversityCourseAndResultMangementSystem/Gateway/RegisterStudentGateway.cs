@@ -21,6 +21,22 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             connection.Close();
             return rowAffected;
         }
+
+        public string IsExistEmail(RegisterStudentModel registerStudentModel)
+        {
+            string message = null; 
+            SqlConnection connection = new SqlConnection(connectingString);
+            string query = "SELECT * FROM StudentRegister WHERE StudentEmail='"+registerStudentModel.Email+"' ";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+           if (reader.HasRows)
+           {
+               message = "This mail Already Exist"; 
+           }
+            connection.Close();
+            return message;
+        }
         public List<RegisterStudentModel> GateStudentByDepartmentId(int departmentId)
         {
             SqlConnection con = new SqlConnection(connectingString);

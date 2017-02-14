@@ -24,11 +24,11 @@ namespace UniversityCourseAndResultMangementSystem.Models
         [Required(ErrorMessage = "Enter Course Desicription")]
         [DisplayName("Description")]
         public string CourseDescription { get; set; }
-        [Required(ErrorMessage = "Select a Department")]
-        [DisplayName("Department")]
+        //[Required(ErrorMessage = "Select a Department")]
+        //[DisplayName("Department")]
         public int DepartmentId { get; set; }
-        [Required(ErrorMessage = "Select a Semester")]
-        [DisplayName("Semester")]
+        //[Required(ErrorMessage = "Select a Semester")]
+        //[DisplayName("Semester")]
         public int SemesterId { get; set; }
     }
 }

@@ -26,6 +26,21 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             return rowAffect;
         }
 
+        public string IsEmailExist(TeacherModel teacherModel)
+        {
+            string message = null; 
+            SqlConnection con = new SqlConnection(connectionString);
+            string query = "Select * from Teacher where TeacherEmail = '"+teacherModel.TeacherEmail+"' ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                message = "This Email Already Exist"; 
+            }
+            con.Close();
+            return message;
+        }
         public List<TeacherModel> GateAllTeacherGateway()
         {
             SqlConnection con = new SqlConnection(connectionString);
@@ -53,9 +68,6 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             con.Close();
             return teacherModels;
         }
-
-
-
 
         public CourseAssignModel GatTeacherCreditGateway(int? teacherId)
         {

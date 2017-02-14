@@ -14,7 +14,8 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
     public class EnrollCourseController : Controller
     {
         RegisterStudentManager registerStudentManager = new RegisterStudentManager();
-        CourseManager courseManager = new CourseManager();
+        CourseAssignManager courseManager = new CourseAssignManager();
+        //CourseManager courseManager = new CourseManager();
         EnrollCourseManager enrollCourseManager = new EnrollCourseManager();
 
        [HttpGet]

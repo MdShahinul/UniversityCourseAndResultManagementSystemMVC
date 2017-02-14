@@ -9,18 +9,16 @@
 <h2>Register Student </h2>
 
 
-@using (Html.BeginForm()) 
-{
+<form class="container" id="studentRegister" method="POST">
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-      
         @Html.ValidationSummary(true)
         <div>
             @if (ViewBag.message != null)
             {
                 <h4>@ViewBag.message</h4>
-            } 
+            }
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
@@ -49,7 +47,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Date)
             </div>
         </div>
@@ -76,14 +74,29 @@
             </div>
         </div>
 
-       <div class="form-group">
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+</form>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+  
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+     $(document).ready(function () {
+         $("#studentRegister").validate({
+                rules: {
+                    DepartmentId: "required"
+                 },
+                messages: {
+                   DepartmentId: "Select Department"
+              }
+            });
+         });
+     </script>
 }

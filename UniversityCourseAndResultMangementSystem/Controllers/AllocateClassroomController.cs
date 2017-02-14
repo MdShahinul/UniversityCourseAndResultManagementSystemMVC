@@ -12,7 +12,7 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
     {
         AllocateClassroomManager allocateClassroomManager = new AllocateClassroomManager();
         DepartmentManager departmentManager = new DepartmentManager();
-        CourseManager courseManager = new CourseManager();
+        CourseAssignManager courseManager = new CourseAssignManager();
         DayOfWeekManager dayOfWeekManager = new DayOfWeekManager();
         RoomManager roomManager = new RoomManager();
         

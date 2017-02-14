@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ViewResultController.cs" />
     <Compile Include="Gateway\AllocateClassroomGateway.cs" />
     <Compile Include="Gateway\AllocateClassroomViewGateway.cs" />
+    <Compile Include="Gateway\CourseAssignGateway.cs" />
     <Compile Include="Gateway\DayOfWeekGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
     <Compile Include="Gateway\CourseGateway.cs" />
@@ -189,6 +190,7 @@
     </Compile>
     <Compile Include="Manager\AllocateClassroomManager.cs" />
     <Compile Include="Manager\AllocateClassroomViewManager.cs" />
+    <Compile Include="Manager\CourseAssignManager.cs" />
     <Compile Include="Manager\CourseManager.cs" />
     <Compile Include="Manager\DayOfWeekManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />

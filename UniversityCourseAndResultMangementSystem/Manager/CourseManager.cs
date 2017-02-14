@@ -12,49 +12,51 @@ namespace UniversityCourseAndResultMangementSystem.Manager
     public class CourseManager
     {
         CourseGateway courseGateway = new CourseGateway();
-
         public string SaveCourseManager(CourseModel courseModel)
         {
-            if (courseGateway.IsCourseNameExist(courseModel))
+            if (courseGateway.IsCourseNameExist(courseModel) == null)
             {
-                return "Is Course Name Already Exist";
-            }
-            if (courseGateway.SaveCourseGateway(courseModel) > 0)
-            {
-                return "Save Successfull";
-            }
-            else
-            {
-                return "Save Fail";
-            }
-        }
-
-        public List<CourseModel> GateAllCourseManager()
-        {
-            return courseGateway.GateAllCourseGateway();
-        }
-
-        public string SaveCourseAssignManager(CourseAssignModel courseAssignModel)
-        {
-            int rowAffect = courseGateway.SaveCourseAssignGateway(courseAssignModel);
-            if (rowAffect > 0)
-            {
-                return "Save Successfull";
+                if (courseGateway.SaveCourseGateway(courseModel) > 0)
+                {
+                    return "Save Successfull";
+                }
+                else
+                {
+                    return "Save Fail";
+                }
             }
             else
             {
-                return "Save Fail"; 
+                return courseGateway.IsCourseNameExist(courseModel); 
             }
-        }
+           }
 
-        public CourseAssignModel GateCourseCredit(int? courseId)
-        {
-            return courseGateway.GateCourseCredit(courseId); 
-        }
+        //public List<CourseModel> GateAllCourseManager()
+        //{
+        //    return courseGateway.GateAllCourseGateway();
+        //}
 
-        public List<CourseAssignModel> GatAllViewCourseStaticManager()
-        {
-            return courseGateway.GatAllViewCourseStaticGateway(); 
-        } 
+        //public string SaveCourseAssignManager(CourseAssignModel courseAssignModel)
+        //{
+        //    int rowAffect = courseGateway.SaveCourseAssignGateway(courseAssignModel);
+        //    if (rowAffect > 0)
+        //    {
+        //        return "Save Successfull";
+        //    }
+        //    else
+        //    {
+        //        return "Save Fail"; 
+        //    }
+        //}
+
+        //public CourseAssignModel GateCourseCredit(int? courseId)
+        //{
+        //    return courseGateway.GateCourseCredit(courseId); 
+        //}
+
+        //public List<CourseAssignModel> GatAllViewCourseStaticManager()
+        //{
+        //    return courseGateway.GatAllViewCourseStaticGateway(); 
+        //} 
     }
 }
