@@ -28,7 +28,6 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
                     viewResultModel.RegisterNumber = dataReader["RegistationNumber"].ToString();
                     viewResultModel.StudentName = dataReader["StudentName"].ToString();
                     viewResultModel.StudentEmail = dataReader["StudentEmail"].ToString();
-                    //viewResultModel.DepartmentName = dataReader["DepartName"].ToString();
                     viewResultModel.CourseCode = dataReader["CourseCode"].ToString();
                     viewResultModel.CourseName = dataReader["CourseName"].ToString();
                     viewResultModel.Grade = dataReader["Grade"].ToString();
@@ -38,6 +37,29 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             }
             con.Close();
             return viewResultModels;
+        }
+
+
+        public ViewResultModel GetIdByStudentInfo(int id)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            string query = "select * from EnrollByDepartment where StudentId = '" + id + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            ViewResultModel viewResultModel = new ViewResultModel();
+            if (dataReader.HasRows)
+            {
+                while (dataReader.Read())
+                {
+                    viewResultModel.CourseName = dataReader["StudentName"].ToString();
+                    viewResultModel.StudentEmail = dataReader["StudentEmail"].ToString();
+                    viewResultModel.DepartmentName = dataReader["DepartName"].ToString();
+                }
+                dataReader.Close();
+            }
+            con.Close();
+            return viewResultModel;
         }
       }
 }

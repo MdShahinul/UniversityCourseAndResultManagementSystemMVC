@@ -1,0 +1,60 @@
+﻿@using UniversityCourseAndResultMangementSystem.Models
+
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "InitializeToPDF";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container" style="width:661px;border: 1px solid rgb(215, 215, 215);">
+        <center><h2>Student Result</h2></center>
+
+        <table class="">
+            <tr>
+                <td>Name : </td>
+                <td>@ViewBag.StudentInfo.StudentName</td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td>@ViewBag.StudentInfo.StudentEmail</td>
+            </tr>
+            <tr>
+                <td>Department : </td>
+                <td>@ViewBag.StudentInfo.DepartmentName</td>
+            </tr>
+        </table>
+        <br />
+        <table class="table-bordered" style="width:629px;">
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Name / Title</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="result">
+                @if (ViewBag.ResultList != null)
+                {
+                    foreach (ViewResultModel aResult in ViewBag.ResultList)
+                    {
+                        <tr> <td>@aResult.CourseCode </td> <td> @aResult.CourseName</td><td> @aResult.Grade</td></tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

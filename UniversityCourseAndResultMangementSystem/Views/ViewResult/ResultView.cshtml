@@ -3,10 +3,10 @@
 @{
     ViewBag.Title = "ResultView";
     List<RegisterStudentModel> registerList = ViewBag.message;
-
 }
 
 <h2>View Result</h2>
+
 
 <form method="POST" id="ViewResult" class="container">
     <div class="form-horizontal">
@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default" id="submitButton">Make PDF</button>
+                    <a id="makerpdf" href=""><button type="submit" class="btn btn-default">Make PDF</button></a>
                 </div>
             </div>
             <table class="table table-bordered">
@@ -66,57 +66,63 @@
                     </tr>
                 </thead>
 
-                <tbody class="a" id="result"></tbody>
+                <tbody id="result"></tbody>
             </table>
         </fieldset>
     </div>
 </form>
 @section scripts
-{
-    
-<script src="~/Scripts/jquery-3.1.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
+    {
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    
-    
-    <script>
-    $(document).ready(function () {
-        $("#ViewResult").validate({
-            rules: {
-                StudentId: "required",
-            },
-            message: {
-                StudentId: "Select Register Number"
-            }
-        });
-    });
 
-    $(document).ready(function () {
-        $("#StudentId").change(function () {
-            var student = $("#StudentId").val();
-            $("#StudentName").empty();
-            $("#StudentEmail").empty();
-            $("#DepartmentName").empty();
-            var json = {
-                StudentId: student
-            };
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("GateRegisterNumberByStudentId", "ViewResult")',
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(json),
-                success: function (data) {
-                    $("#StudentName").val(data.StudentName);
-                    $("#StudentEmail").val(data.StudentEmail);
-                    $("#DepartmentName").val(data.DepartmentName);
+    <script>
+        $(document).ready(function () {
+            $.validator.addMethod("valueNotEquals", function (value, element, arg) {
+                return arg != value;
+            }, "Value must not equal arg.");
+            $("#ViewResult").validate({
+                rules: {
+                    StudentId: "required",
+                },
+                message: {
+                    StudentId: "Select Register Number"
                 }
             });
         });
 
-    });
+        $(document).ready(function () {
+            $("#StudentId").change(function () {
+                var student = $("#StudentId").val();
+                $("#StudentName").empty();
+                $("#StudentEmail").empty();
+                $("#DepartmentName").empty();
+                var json = {
+                    StudentId: student
+                };
+
+                var pdfurl = "/ViewResult/ExportPDF?stdId=" + student;
+                $("#makerpdf").attr("href", pdfurl);
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GateRegisterNumberByStudentId", "ViewResult")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $("#StudentName").val(data.StudentName);
+                        $("#StudentEmail").val(data.StudentEmail);
+                        $("#DepartmentName").val(data.DepartmentName);
+                        $("#heddenField").val(data.Department);
+                    }
+                });
+            });
+
+        });
 
 
-    $(document).ready(function () {
+        $(document).ready(function () {
             $("#StudentId").change(function () {
                 var student = $("#StudentId").val();
                 $("#result").empty();
@@ -139,9 +145,5 @@
 
         });
 
-</script>
-
+    </script>
 }
-
-
-

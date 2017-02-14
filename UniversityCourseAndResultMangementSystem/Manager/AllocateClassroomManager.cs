@@ -14,16 +14,25 @@ namespace UniversityCourseAndResultMangementSystem.Manager
 
         public string AllocateClassRoomManager(AllocateClassroomModel allocateClassroomModel)
         {
-            if (allocateClassroomGateway.AllocateClassRoomGateway(allocateClassroomModel) > 0)
+            if (allocateClassroomGateway.CanAllocateClassRoom(allocateClassroomModel) > 0 || allocateClassroomGateway.CanAllocateClassRoom2(allocateClassroomModel) > 0)
             {
-                return "Save Successfull"; 
+                return
+                    "Sorry, You can't Allocate room in this schedule, This Schedule Haven ,Please Try with Anther Shedule."; 
             }
             else
             {
-                return "Save Fail"; 
+                if (allocateClassroomGateway.AllocateClassRoomGateway(allocateClassroomModel) > 0)
+                {
+                    return "Save Successfull";
+                }
+                else
+                {
+                    return "Save Fail";
+                }
+                
             }
+            
         }
-
       
     }
 }

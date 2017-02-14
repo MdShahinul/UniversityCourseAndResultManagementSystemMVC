@@ -40,6 +40,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.Core">
+      <HintPath>..\packages\Rotativa.Core.2.0.2.1\lib\net45\Rotativa.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.MVC">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -170,6 +179,8 @@
     <Compile Include="Controllers\RegisterStudentController.cs" />
     <Compile Include="Controllers\StudentResultController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\UnallocateAllClassroomsController.cs" />
+    <Compile Include="Controllers\UnassignAllCoursesController.cs" />
     <Compile Include="Controllers\ViewResultController.cs" />
     <Compile Include="Gateway\AllocateClassroomGateway.cs" />
     <Compile Include="Gateway\AllocateClassroomViewGateway.cs" />
@@ -241,7 +252,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -304,7 +317,10 @@
     <Content Include="Views\RegisterStudent\RegirstStudentSave.cshtml" />
     <Content Include="Views\EnrollCourse\EnrollCourseSave.cshtml" />
     <Content Include="Views\StudentResult\StudentResultSave.cshtml" />
+    <Content Include="Views\ViewResult\InitializeToPDF.cshtml" />
     <Content Include="Views\ViewResult\ResultView.cshtml" />
+    <Content Include="Views\UnassignAllCourses\UnassingCourse.cshtml" />
+    <Content Include="Views\UnallocateAllClassrooms\UnallocateClassroom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
