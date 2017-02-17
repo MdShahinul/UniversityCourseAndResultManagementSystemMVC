@@ -16,7 +16,7 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
         {
           
             SqlConnection con = new SqlConnection(connectionString);
-            string query = "select * from ViewClassSchedule where DepartmentID = '"+DepartmentId+"'";
+            string query = "select * from ViewClassScheduleNew where DepartmentID = '"+DepartmentId+"'";
             SqlCommand cmd = new SqlCommand(query, con);
             List<AllocateClassroomViewModel> allocateClassroomViewModels = new List<AllocateClassroomViewModel>();
             con.Open();

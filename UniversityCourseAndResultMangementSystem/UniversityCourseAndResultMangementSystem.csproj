@@ -195,6 +195,7 @@
     <Compile Include="Gateway\SemesterGateway.cs" />
     <Compile Include="Gateway\StudentResultGateway.cs" />
     <Compile Include="Gateway\TeacherGateway.cs" />
+    <Compile Include="Gateway\UnAllocateClassroomGateway.cs" />
     <Compile Include="Gateway\ViewResultGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,6 +213,7 @@
     <Compile Include="Manager\SemesterManager.cs" />
     <Compile Include="Manager\StudentResultManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
+    <Compile Include="Manager\UnAllocateClassroomManager.cs" />
     <Compile Include="Manager\ViewResultManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllocateClassroomModel.cs" />

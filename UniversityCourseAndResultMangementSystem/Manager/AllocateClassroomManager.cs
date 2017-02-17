@@ -21,7 +21,7 @@ namespace UniversityCourseAndResultMangementSystem.Manager
             }
             else
             {
-                if (allocateClassroomGateway.AllocateClassRoomGateway(allocateClassroomModel) > 0)
+                if (allocateClassroomGateway.AllocateClassRoomGateway(allocateClassroomModel) > 0 && allocateClassroomGateway.UnAllocateClassRoomGateway(allocateClassroomModel) >0) 
                 {
                     return "Save Successfull";
                 }
@@ -29,7 +29,7 @@ namespace UniversityCourseAndResultMangementSystem.Manager
                 {
                     return "Save Fail";
                 }
-                
+               
             }
             
         }

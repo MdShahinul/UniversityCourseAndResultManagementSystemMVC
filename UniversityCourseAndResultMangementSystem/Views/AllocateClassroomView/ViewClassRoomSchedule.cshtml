@@ -6,7 +6,7 @@
     List<DepartmentModel> departmentList = ViewBag.departmentList;
 }
 
-<h2>ViewClassRoomSchedule</h2>
+<h2>View Class Room Schedule</h2>
 
 
 <form class="container" method="POST">
@@ -36,20 +36,9 @@
                         <td>Name/Title</td>
                         <td>Schedule Info</td>
                     </tr>
-                    @*@foreach (var Statci in courseStatic)
-                        {
-                            <tr>
-                                <td>
-                                    @Statci.CourseCode
-                                </td>
-                                <td>@Statci.CourseName</td>
-                                <td>@Statci.SemesterName</td>
-                                <td>@Statci.TeacherName</td>
-                            </tr>
-                        }*@
-                </thead>
+               </thead>
 
-                <tbody class="a" id="result"></tbody>
+                <tbody id="result"></tbody>
             </table>
         </fieldset>
     </div>

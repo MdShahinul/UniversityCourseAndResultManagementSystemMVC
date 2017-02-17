@@ -26,6 +26,20 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
             con.Close();
             return rowAffcet;
         }
+
+        public int UnAllocateClassRoomGateway(AllocateClassroomModel allocateRoom)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            string query = "insert into UnAllocateClassrooms values ('" + allocateRoom.DepartmentId + "','" +
+                           allocateRoom.CourseId + "','" + allocateRoom.RoomNoId + "','" + allocateRoom.DayId + "','" +
+                           allocateRoom.FromDate + "','" + allocateRoom.ToDate + "','" + allocateRoom.FromAmOrPm + "','" +
+                           allocateRoom.ToAmOrPm + "')";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int rowAffcet = cmd.ExecuteNonQuery();
+            con.Close();
+            return rowAffcet;
+        }
         public int CanAllocateClassRoom(AllocateClassroomModel allocateClassRooms)
         {
 
@@ -49,7 +63,7 @@ namespace UniversityCourseAndResultMangementSystem.Gateway
         }
         public int CanAllocateClassRoom2(AllocateClassroomModel allocateClassRooms)
         {
-            string connectionString = WebConfigurationManager.ConnectionStrings["UniversityManagementSystemDB"].ConnectionString;
+           
             SqlConnection connection = new SqlConnection(connectionString);
             string query = " select * from AllocateClassroom where RoomNoId='" + allocateClassRooms.RoomNoId + "' and DayId= '" + allocateClassRooms.DayId + "' and ( ('" + string.Format("{0:hh.mm}", allocateClassRooms.FromDate) + "'>=FromDate and '" + string.Format("{0:hh.mm}", allocateClassRooms.FromDate) + "'<ToDate )and (FromAmOrPm='AM' or FromAmOrPm='" + allocateClassRooms.FromAmOrPm + "')) and ('" + string.Format("{0:hh.mm}", allocateClassRooms.ToDate) + "'<=ToDate and ToAmOrPm='" + allocateClassRooms.ToAmOrPm + "')";
             SqlCommand command = new SqlCommand(query, connection);

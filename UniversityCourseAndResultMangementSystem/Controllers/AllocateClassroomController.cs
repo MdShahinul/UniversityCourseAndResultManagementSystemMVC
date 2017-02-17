@@ -21,7 +21,7 @@ namespace UniversityCourseAndResultMangementSystem.Controllers
        {
             ViewBag.message = TempData["Msg"]; 
             ViewBag.departmentList = departmentManager.GateAllDepertmentManager();
-           ViewBag.roomList = roomManager.GateAllRoomNoManager(); 
+            ViewBag.roomList = roomManager.GateAllRoomNoManager(); 
             ViewBag.dayList = dayOfWeekManager.GateAllDayManager();
            return View();
         }
